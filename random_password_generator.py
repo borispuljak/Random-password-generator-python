@@ -17,7 +17,7 @@ def generate_password(min_lenght, numbers=True, special_characters=True):
     has_number = False
     has_special = False
 
-    while not meets_criteria or len(password) <min_lenght:
+    while not meets_criteria or len(password) < min_lenght:
         new_char = random.choice(characters)
         password += new_char
 
@@ -35,4 +35,10 @@ def generate_password(min_lenght, numbers=True, special_characters=True):
         
     return password
 
-password =generate_password(10)
+min_lenght = int(input("Unesite duljinu: "))
+has_number = input("Želite li da lozinka sadrži brojeve? ").lower() == "y"
+has_special = input("Želite li da lozinka sadrži znakove? ").lower() == "y"
+
+password = generate_password(min_lenght, has_number, has_special)
+
+print("The generated password is: ", password)
