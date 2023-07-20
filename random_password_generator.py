@@ -1,44 +1,36 @@
 import random
 import string
 
-def generate_password(min_lenght, numbers=True, special_characters=True):
-    letters = string.ascii_letters
-    digits = string.digits
-    special = string.punctuation
+def generate_password(duljina, m_slova, v_slova, brojevi, znakovi):
+    m_letters = string.ascii_lowercase
+    v_letters = string.ascii_uppercase
+    numbers = string.digits
+    signs = string.punctuation
 
-    characters = letters
-    if numbers:
-        characters += digits
-    if special_characters:
-        characters += special
+    characters = ""
+    if m_slova:
+        characters += m_letters
+    if v_slova:
+        characters += v_letters
+    if brojevi:
+        characters += numbers
+    if znakovi:
+        characters += signs
 
     password = ""
-    meets_criteria = False
-    has_number = False
-    has_special = False
 
-    while not meets_criteria or len(password) < min_lenght:
+    while len(password) != duljina:
         new_char = random.choice(characters)
         password += new_char
-
-        if new_char in digits:
-            has_number = True
-        elif new_char in special:
-            has_special = True
-        
-        meets_criteria = True
-
-        if numbers:
-            meets_criteria = has_number
-        if special_characters:
-            meets_criteria = meets_criteria and has_special
         
     return password
 
-min_lenght = int(input("Unesite duljinu: "))
-has_number = input("Želite li da lozinka sadrži brojeve? ").lower() == "y"
-has_special = input("Želite li da lozinka sadrži znakove? ").lower() == "y"
+duljina = int(input("Unesite duljinu: "))
+m_slova = input("Želite li da lozinka sadrži mala slova? (da/ne) ").lower() == "da"
+v_slova = input("Želite li da lozinka sadrži slova? (da/ne) ").lower() == "da"
+brojevi = input("Želite li da lozinka sadrži brojeve? (da/ne) ").lower() == "da"
+znakovi = input("Želite li da lozinka sadrži znakove? (da/ne) ").lower() == "da"
 
-password = generate_password(min_lenght, has_number, has_special)
+password = generate_password(duljina, m_slova, v_slova, brojevi, znakovi)
 
-print("The generated password is: ", password)
+print("Lozinka: ", password)
