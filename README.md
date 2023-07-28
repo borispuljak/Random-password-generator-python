@@ -1,1 +1,1 @@
-Python script that generates random passwords with customizable length and characters.
+Python script that generates random password with customizable length and you can choose if you want: lowercase letters, uppercase letters, numbers and signs.
