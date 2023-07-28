@@ -1,1 +1,1 @@
-# Random-password-generator-python
+Python script that generates random passwords with customizable length and characters.
